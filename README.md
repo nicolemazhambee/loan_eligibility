@@ -72,6 +72,18 @@ POST `http://127.0.0.1:8000/api/loans/eligibility/`
 }
 ```
 
+## Security & Authentication Note
+
+**Why is Authentication Omitted?**
+
+For the purposes of this technical assessment, authentication (JWT/OAuth) has been intentionally omitted to prioritize:
+
+1.  **Reviewer Accessibility**: Removing auth barriers allows for immediate, frictionless testing of the core business logic using tools like Postman or cURL without needing to generate tokens first.
+2.  **Scope Focus**: The assignment emphasizes the implementation of loan eligibility logic (Salary vs. Repayment, Credit Scores, etc.) and mock service integration. Adding a full auth layer would add boilerplate code not central to demonstrating the requested algorithmic skills.
+3.  **Microservice Context**: In a real-world architecture, this service would likely sit behind an **API Gateway** (e.g., Kong, AWS API Gateway) which handles termination of SSL and Authentication. This service would then rely on passed-through headers or internal network security, treating the request as trusted (or validated via an internal token).
+
+*Note: For a production-ready implementation, `djangorestframework-simplejwt` would be the standard choice for securing endpoints.*
+
 ## Improvements for Production
 
 - **Authentication**: Add JWT or API Key authentication via `djangorestframework-simplejwt`.
