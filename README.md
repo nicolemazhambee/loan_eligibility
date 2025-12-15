@@ -14,6 +14,23 @@ A Django REST Framework API that evaluates loan applications based on salary, cr
     - No active defaults
     - Max 3 active loans
 
+## Test Subjects (Mock Data)
+
+You can use the following National IDs to test various eligibility scenarios:
+
+| National ID | Scenario | Salary | Credit Score | Active Loans | Defaults |
+|---|---|---|---|---|---|
+| `12345678` | **Eligible** (Standard) | $5,000 | 750 | 1 | No |
+| `12345679` | **Ineligible** (Low Salary) | $800 | 700 | 0 | No |
+| `12345680` | **Ineligible** (Low Credit) | $3,000 | 550 | 0 | No |
+| `12345681` | **Ineligible** (Active Default) | $3,000 | 650 | 0 | Yes |
+| `12345682` | **Ineligible** (Too Many Loans) | $3,000 | 650 | 4 | No |
+| `12345683` | **Eligible** (High Earner) | $15,000 | 850 | 0 | No |
+| `12345684` | **Eligible** (Borderline Credit) | $4,000 | 600 | 1 | No |
+| `12345685` | **Eligible** (Max Loans) | $4,000 | 700 | 3 | No |
+| `12345686` | **Ineligible** (Mismatch) | $2,000 | 720 | 0 | No |
+| `12345687` | **Ineligible** (Random) | $5,555 | 666 | 2 | No |
+
 ## Tech Choices
 
 - **Django & DRF**: Standard, robust framework for Python APIs.
@@ -49,7 +66,7 @@ POST `http://127.0.0.1:8000/api/loans/eligibility/`
 
 ```json
 {
-  "national_id": "12345",
+  "national_id": "12345678",
   "loan_amount": 5000,
   "term_months": 12
 }
