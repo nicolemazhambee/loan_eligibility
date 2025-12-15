@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-l+m)+$vl0usq!#p@-f_#*e)elg&6-xpcrt83(mm65bv(bw1wo^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['madfustal.co.zw', 'localhost', '127.0.0.1']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://madfustal.co.zw',
+    'http://madfustal.co.zw',
+]
 
 
 # Application definition
